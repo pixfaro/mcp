@@ -57,7 +57,7 @@ export function buildServer(client: PixfaroClient): McpServer {
       image: z.string().regex(/^img_[0-9a-f]{20}$/).describe("The img_… id of a previous generation"),
       instruction: z.string().min(1).max(4000).describe("What to change; everything else stays the same"),
       model: z.string().default("nano-banana-2").describe("Model id from list_models"),
-      aspect_ratio: z.string().regex(/^[1-9]\d?:[1-9]\d?$/).default("1:1").describe('e.g. "1:1", "16:9"'),
+      aspect_ratio: z.string().regex(/^[1-9]\d?:[1-9]\d?$/).optional().describe('omit to keep the source image\'s shape; e.g. "16:9" to reshape'),
     },
     async ({ image, instruction, model, aspect_ratio }) => {
       try {

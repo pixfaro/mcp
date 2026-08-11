@@ -25,7 +25,7 @@ Usage:
 
 Options:
   -m, --model <id>     model id (default nano-banana-2; see \`pixfaro models\`)
-  -a, --aspect <w:h>   aspect ratio, e.g. 16:9 (default 1:1)
+  -a, --aspect <w:h>   aspect ratio, e.g. 16:9 (gen default 1:1; edit keeps the source's shape)
   -o, --out <file>     download the image to a file (default: print the URL)
   -f, --force          overwrite the -o file if it already exists
 
@@ -36,14 +36,15 @@ Env:
 
 interface Flags {
   model: string;
-  aspect: string;
+  /** undefined = unset: gen falls back to 1:1, edit keeps the source's shape. */
+  aspect?: string;
   out?: string;
   force: boolean;
   rest: string[];
 }
 
 export function parseArgs(argv: string[]): Flags {
-  const flags: Flags = { model: "nano-banana-2", aspect: "1:1", force: false, rest: [] };
+  const flags: Flags = { model: "nano-banana-2", force: false, rest: [] };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]!;
     if (a === "-m" || a === "--model") flags.model = argv[++i] ?? "";
@@ -110,7 +111,7 @@ export async function main(
           console.error('usage: pixfaro gen "<prompt>" [-m model] [-a 16:9] [-o file.png]');
           return 2;
         }
-        const r = await client.generate({ model, prompt, aspect_ratio: aspect });
+        const r = await client.generate({ model, prompt, aspect_ratio: aspect ?? "1:1" });
         return finish(r, out, force, fetchFn);
       }
       case "edit": {

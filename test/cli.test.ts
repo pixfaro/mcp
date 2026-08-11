@@ -42,6 +42,7 @@ describe("parseArgs", () => {
   it("extracts flags in any position and keeps the rest", () => {
     const f = parseArgs(["a", "-m", "flux", "lighthouse", "--aspect", "16:9", "-o", "x.png"]);
     expect(f).toEqual({ model: "flux", aspect: "16:9", out: "x.png", force: false, rest: ["a", "lighthouse"] });
+    expect(parseArgs(["x"]).aspect).toBeUndefined();
   });
 });
 
@@ -148,5 +149,19 @@ describe("paid URL survives download failures", () => {
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
+  });
+});
+
+describe("edit aspect default (dogfood)", () => {
+  it("edit without -a sends no aspect_ratio; gen defaults to 1:1", async () => {
+    const seen: Array<string | undefined> = [];
+    const spy = fakeClient({
+      generate: async (a: { aspect_ratio?: string }) => (seen.push(a.aspect_ratio), RESULT),
+      edit: async (a: { aspect_ratio?: string }) => (seen.push(a.aspect_ratio), RESULT),
+    });
+    await main(["gen", "x"], spy);
+    await main(["edit", "img_" + "a".repeat(20), "fix"], spy);
+    await main(["edit", "img_" + "a".repeat(20), "fix", "-a", "16:9"], spy);
+    expect(seen).toEqual(["1:1", undefined, "16:9"]);
   });
 });
