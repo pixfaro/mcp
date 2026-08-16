@@ -31,6 +31,17 @@ For Claude Code:
 claude mcp add pixfaro -e PIXFARO_KEY=pf_live_… -- npx -y @pixfaro/mcp
 ```
 
+### Remote server (no install, OAuth)
+
+On claude.ai, Claude Desktop, or any client that speaks streamable HTTP, add the
+remote server instead — no npm, no key in a config file:
+
+```
+https://mcp.pixfaro.com/mcp
+```
+
+The client runs the OAuth flow; you sign in with your Pixfaro account.
+
 ## Tools
 
 | Tool | What it does |
@@ -48,7 +59,7 @@ The same package family ships an unscoped CLI for scripts, CI, and pipelines:
 
 ```bash
 export PIXFARO_KEY=pf_live_…
-npx pixfaro gen "a lighthouse at night, flat illustration" -a 16:9 -o cover.png
+npx pixfaro gen "a lighthouse at night, minimal flat style" -a 16:9 -o cover.png
 npx pixfaro models
 npx pixfaro balance
 npx pixfaro edit img_8f2a… "make the sky darker" -o v2.png

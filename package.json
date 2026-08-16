@@ -17,6 +17,10 @@
     "pixfaro-mcp": "dist/server.js",
     "pixfaro": "dist/cli.js"
   },
+  "exports": {
+    "./cli": "./dist/cli.js",
+    "./package.json": "./package.json"
+  },
   "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node -e \"for (const f of ['server','cli']) require('fs').chmodSync('dist/'+f+'.js', 0o755)\"",

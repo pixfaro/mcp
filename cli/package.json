@@ -1,0 +1,24 @@
+{
+  "name": "pixfaro",
+  "version": "0.1.0",
+  "description": "Pixfaro CLI — generate images with any major model from your terminal, scripts, or CI. One API key, one prepaid balance.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixfaro/mcp.git",
+    "directory": "cli"
+  },
+  "homepage": "https://pixfaro.com",
+  "keywords": ["image-generation", "ai-images", "cli", "nano-banana", "gemini", "gpt-image"],
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "pixfaro": "bin.js"
+  },
+  "files": ["bin.js", "README.md"],
+  "dependencies": {
+    "@pixfaro/mcp": "^0.1.0"
+  }
+}
