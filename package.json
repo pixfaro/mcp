@@ -1,6 +1,6 @@
 {
   "name": "@pixfaro/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pixfaro MCP — image generation MCP server for every image model. One API key, one balance, every major model.",
   "license": "MIT",
   "type": "module",
@@ -14,6 +14,7 @@
     "node": ">=20"
   },
   "bin": {
+    "mcp": "dist/server.js",
     "pixfaro-mcp": "dist/server.js",
     "pixfaro": "dist/cli.js"
   },

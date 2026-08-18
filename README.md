@@ -1,8 +1,9 @@
 # Pixfaro MCP — image generation MCP server for every image model
 
 One MCP connection, one prepaid balance, every major image model — Nano Banana,
-Gemini, GPT Image and more. Pixfaro holds the provider accounts, keys, retries
-and format differences; your agent just asks for an image.
+Gemini today, GPT Image next (visible as "coming soon" in `list_models`).
+Pixfaro holds the provider accounts, keys, retries and format differences;
+your agent just asks for an image.
 
 Works with **Claude Desktop, Claude Code, Cursor, Windsurf**, and any MCP client.
 
@@ -40,7 +41,8 @@ remote server instead — no npm, no key in a config file:
 https://mcp.pixfaro.com/mcp
 ```
 
-The client runs the OAuth flow; you sign in with your Pixfaro account.
+The client runs the OAuth flow; you sign in with your Pixfaro account. Clients
+without OAuth can pass an API key instead: `Authorization: Bearer pf_live_…`.
 
 ## Tools
 
@@ -52,6 +54,9 @@ The client runs the OAuth flow; you sign in with your Pixfaro account.
 | `get_balance` | current prepaid balance |
 
 Replies carry a hosted URL, never base64 — your agent's context stays small.
+
+Both generation tools accept `aspect_ratio` (e.g. `"16:9"`, `"9:16"`). Edits
+keep the source image's shape when you omit it — pass one only to reshape.
 
 ## CLI
 
@@ -69,7 +74,7 @@ npx pixfaro edit img_8f2a… "make the sky darker" -o v2.png
 
 | Variable | Meaning |
 |---|---|
-| `PIXFARO_KEY` | your API key (`pf_live_…`) — required for generation |
+| `PIXFARO_KEY` | your API key (`pf_live_…`) — required for everything except `models` |
 | `PIXFARO_API_URL` | endpoint override (default `https://api.pixfaro.com`) |
 
 ## What this repo is

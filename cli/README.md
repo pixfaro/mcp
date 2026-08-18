@@ -1,8 +1,9 @@
 # pixfaro — image generation CLI for every image model
 
 Generate images from your terminal, scripts, or CI with any major model —
-Nano Banana, Gemini, GPT Image and more. One API key, one prepaid balance,
-no subscription; Pixfaro holds the provider accounts and keys.
+Nano Banana and Gemini today, GPT Image next (`pixfaro models` shows what's
+live). One API key, one prepaid balance, no subscription; Pixfaro holds the
+provider accounts and keys.
 
 ```bash
 export PIXFARO_KEY=pf_live_…   # get one at https://pixfaro.com

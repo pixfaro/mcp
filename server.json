@@ -1,15 +1,15 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.json",
   "name": "com.pixfaro/mcp",
-  "description": "Image generation for every major model — one API key, one prepaid balance. Nano Banana, Gemini, GPT Image and more behind a single MCP.",
+  "description": "Image generation for every major model — one API key, one prepaid balance. Nano Banana, Gemini and more behind a single MCP.",
   "repository": { "url": "https://github.com/pixfaro/mcp", "source": "github" },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://pixfaro.com",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@pixfaro/mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": { "type": "stdio" },
       "environmentVariables": [
         {
