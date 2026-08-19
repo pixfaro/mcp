@@ -1,7 +1,7 @@
 {
   "name": "@pixfaro/mcp",
-  "version": "0.1.1",
-  "description": "Pixfaro MCP — image generation MCP server for every image model. One API key, one balance, every major model.",
+  "version": "0.1.2",
+  "description": "Pixfaro MCP \u2014 image generation MCP server for every image model. One API key, one balance, every major model.",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -9,7 +9,15 @@
     "url": "git+https://github.com/pixfaro/mcp.git"
   },
   "homepage": "https://pixfaro.com",
-  "keywords": ["mcp", "mcp-server", "image-generation", "ai-images", "claude", "cursor", "windsurf"],
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "image-generation",
+    "ai-images",
+    "claude",
+    "cursor",
+    "windsurf"
+  ],
   "engines": {
     "node": ">=20"
   },
@@ -22,7 +30,11 @@
     "./cli": "./dist/cli.js",
     "./package.json": "./package.json"
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node -e \"for (const f of ['server','cli']) require('fs').chmodSync('dist/'+f+'.js', 0o755)\"",
     "typecheck": "tsc --noEmit",
@@ -37,5 +49,6 @@
     "@types/node": "^24",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
-  }
+  },
+  "mcpName": "com.pixfaro/mcp"
 }
